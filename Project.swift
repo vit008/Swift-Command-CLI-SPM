@@ -1,13 +1,27 @@
 import ProjectDescription
 
+
+// Helper function to check if entitlements file exists
+func entitlements() -> Entitlements? {
+    let result: Entitlements = .dictionary([
+        "aps-environment": .string("development"),
+        "com.apple.developer.applesignin": .array([
+            .string("Default")
+        ]),
+        "Can be debugged": .boolean(true)
+    ])
+    return result
+}
+
+
 let project = Project(
-    name: "SpaceForApps",
+    name: "GreenMoon",
     targets: [
         .target(
-            name: "SpaceForApps",
+            name: "GreenMoonApp",
             destinations: .iOS,
             product: .app,
-            bundleId: "io.tuist.SpaceForApps",
+            bundleId: "io.tuist.GreenMoonApp",
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [
@@ -16,19 +30,31 @@ let project = Project(
                     ],
                 ]
             ),
-            sources: ["SpaceForApps/Sources/**"],
-            resources: ["SpaceForApps/Resources/**"],
-            dependencies: []
+            sources: ["GreenMoonApp/Sources/**"],
+            resources: ["GreenMoonApp/Resources/**"],
+            entitlements: entitlements(),
+            dependencies: [
+//                .external(name: "GoogleTagManager"),
+
+                // https://firebase.google.com/docs/ios/setup#available-pods
+                .external(name: "FirebaseCore"),
+//                .external(name: "FirebaseAuth"),
+//                .external(name: "FirebaseMessaging"),
+//                .external(name: "FirebasePerformance"),
+//                .external(name: "FirebaseCrashlytics"),
+                .external(name: "FirebaseAnalytics"),
+//                .external(name: "FirebaseStorage"),
+            ]
         ),
         .target(
-            name: "SpaceForAppsTests",
+            name: "GreenMoonAppTests",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "io.tuist.SpaceForAppsTests",
+            bundleId: "io.tuist.GreenMoonApp",
             infoPlist: .default,
-            sources: ["SpaceForApps/Tests/**"],
+            sources: ["GreenMoonApp/Tests/**"],
             resources: [],
-            dependencies: [.target(name: "SpaceForApps")]
+            dependencies: [.target(name: "GreenMoonApp")]
         ),
     ]
 )

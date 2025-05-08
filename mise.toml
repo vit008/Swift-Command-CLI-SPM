@@ -1,4 +1,2 @@
 [tools]
 tuist = "4.47.0"
-xcode = "16.3"
-swift = "5.9"
