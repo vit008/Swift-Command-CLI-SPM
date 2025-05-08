@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Remove StoreKit.framework references from the specified .xcodeproj. USAGE: mise run remove-storekit <project-path>"
+#USAGE arg  "<project-path>" help="Path to the .xcodeproj file"
+
+swift run --package-path "$(dirname "$0")/remove-storekit-package" RemoveStoreKit "$@"
