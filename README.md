@@ -1,3 +1,8 @@
+## Swift-Command-CLI-SPM
+
+This repository includes examples of how to create Swift-based CLI commands.
+
+
 ## Setting Up the Project Locally
 
 To prepare the project on your computer for development with Xcode, follow these steps:
@@ -25,7 +30,7 @@ To prepare the project on your computer for development with Xcode, follow these
 	```bash
 	tuist install
 	```
-	
+
 5. **Generate the Xcode Project**
 	Use Tuist to generate the Xcode project and workspace:
 	```bash
